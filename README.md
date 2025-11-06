@@ -79,4 +79,3 @@ Diagnósticos de resíduos (exibidos no gráfico abaixo) confirmam normalidade e
 - EU GMP Annex 15 – Qualification and Validation
 - ISO 13485 – Medical devices quality management
 
-## ✨ Use este código para criar evidências estatísticas auditáveis, reprodutíveis e alinhadas às boas práticas de fabricação (BPF/GMP). 
