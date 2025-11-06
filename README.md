@@ -49,7 +49,7 @@ plot(resultado$model, which = 1:2)  # Diagnósticos: Resíduos e Q-Q
 
 ## 🖼️ Exemplo de Saída
 
-###  1: Sumário do modelo ajustado
+### Sumário do modelo ajustado
 
 ![Resultados](img3.png)
 
