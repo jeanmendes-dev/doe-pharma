@@ -2,7 +2,6 @@
 
 [![R](https://img.shields.io/badge/R-4.0%2B-blue?logo=r)](https://www.r-project.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.xxxx/xxxxxx.svg)](https://doi.org/10.xxxx/xxxxxx) *(opcional)*
 
 **Design e análise de experimentos para validação de processos industriais na indústria farmacêutica e de manufatura.**
 
@@ -17,6 +16,34 @@
 - ✅ **Análise estatística robusta** com modelos lineares (`lm`) e diagnósticos de qualidade.
 - ✅ **Codificação automática de fatores** como `-1` / `+1` (padrão da indústria).
 - ✅ **Pronto para documentação regulatória**: saídas compatíveis com relatórios de validação.
+
+---
+
+## 🚀 Exemplo rápido: Validação de homogeneidade de mistura
+
+library(doe-pharma)
+
+# 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV)
+plano <- design_frf2(factors = 4, resolution = 4)
+
+# 2. Simular resposta (% homogeneidade)
+set.seed(123)
+plano$Homogeneidade <- 80 + 
+  5 * as.numeric(as.character(plano$Fator_1)) + 
+  3 * as.numeric(as.character(plano$Fator_2)) + 
+  rnorm(nrow(plano), sd = 2)
+
+# 3. Analisar
+resultado <- analyze_doe(
+  data = plano,
+  response = "Homogeneidade",
+  model_formula = "Fator_1 + Fator_2 + Fator_3"
+)
+
+# 4. Visualizar resultados
+print(analise$summary)
+print(analise$tidy_coefficients)
+plot(analise$model, which = 1:2)
 
 ---
 
