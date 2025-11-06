@@ -58,10 +58,14 @@ plot(resultado$model, which = 1:2)  # Diagnósticos: Resíduos e Q-Q
 ![Resultados](img3.png)
 
 > Interpretação para relatório de validação:
-Fator 1 tem efeito altamente significativo (p = 0.009) na homogeneidade.
-Fator 2 também é significativo (p = 0.012).
-Fator 3 não influencia significativamente o resultado (p = 0.48) → pode ser fixado em qualquer nível operacional.
-O modelo explica 95.6% da variação (R² = 0.956), indicando excelente capacidade preditiva.
+
+- Fator 1 tem efeito altamente significativo (p = 0.009) na homogeneidade.
+
+- Fator 2 também é significativo (p = 0.012).
+
+- Fator 3 não influencia significativamente o resultado (p = 0.48) → pode ser fixado em qualquer nível operacional.
+
+- O modelo explica 95.6% da variação (R² = 0.956), indicando excelente capacidade preditiva.
 Diagnósticos de resíduos (exibidos no gráfico abaixo) confirmam normalidade e homocedasticidade..
 
 ### Diagnósticos de resíduos
