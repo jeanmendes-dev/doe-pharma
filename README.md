@@ -23,24 +23,24 @@
 
 library(doe-pharma)
 
-- 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV)
+## 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV)
 plano <- design_frf2(factors = 4, resolution = 4)
 
-- 2. Simular resposta (% homogeneidade)
+## 2. Simular resposta (% homogeneidade)
 set.seed(123)
 plano$Homogeneidade <- 80 + 
   5 * as.numeric(as.character(plano$Fator_1)) + 
   3 * as.numeric(as.character(plano$Fator_2)) + 
   rnorm(nrow(plano), sd = 2)
 
-- 3. Analisar o experimento
+## 3. Analisar o experimento
 resultado <- analyze_doe(
   data = plano,
   response = "Homogeneidade",
   model_formula = "Fator_1 + Fator_2 + Fator_3"
 )
 
-- 4. Visualizar resultados
+## 4. Visualizar resultados
 print(resultado$summary)
 print(resultado$tidy_coefficients)
 plot(resultado$model, which = 1:2)  # Diagnósticos: Resíduos e Q-Q
