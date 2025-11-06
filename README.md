@@ -1,4 +1,4 @@
-# doe-pharma 🧪
+# 🧪 doe-pharma
 
 [![R](https://img.shields.io/badge/R-4.0%2B-blue?logo=r)](https://www.r-project.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -23,11 +23,11 @@
 
 library(doe-pharma)
 
-### 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV)
+### 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV):
 
 plano <- design_frf2(factors = 4, resolution = 4)
 
-### 2. Simular resposta (% homogeneidade)
+### 2. Simular resposta (% homogeneidade):
 
 set.seed(123)
 plano$Homogeneidade <- 80 + 
@@ -35,7 +35,7 @@ plano$Homogeneidade <- 80 +
   3 * as.numeric(as.character(plano$Fator_2)) + 
   rnorm(nrow(plano), sd = 2)
 
-### 3. Analisar o experimento
+### 3. Analisar o experimento:
 
 resultado <- analyze_doe(
   data = plano,
@@ -43,7 +43,7 @@ resultado <- analyze_doe(
   model_formula = "Fator_1 + Fator_2 + Fator_3"
 )
 
-### 4. Visualizar resultados
+### 4. Visualizar resultados:
 
 print(resultado$summary)
 print(resultado$tidy_coefficients)
