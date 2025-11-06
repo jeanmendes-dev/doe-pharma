@@ -33,8 +33,10 @@ Fator 3 não influencia significativamente o resultado (p = 0.48) → pode ser f
 O modelo explica 95.6% da variação (R² = 0.956), indicando excelente capacidade preditiva.
 Diagnósticos de resíduos (exibidos no gráfico abaixo) confirmam normalidade e homocedasticidade..
 
-### Gráficos
+### Diagnósticos de resíduos
 
-![Residuals vs Fitted](img1.png)
+![Residuals vs Fitted](img1.png)  
+*Figura 1: Resíduos vs Valores ajustados — sem padrão sistemático.*
 
-![Q-Q Residuals](img2.png)
+![Q-Q Plot](img2.png)  
+*Figura 2: Normalidade dos resíduos — pontos próximos à linha ideal.*
