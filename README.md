@@ -67,3 +67,16 @@ Diagnósticos de resíduos (exibidos no gráfico abaixo) confirmam normalidade e
 
 ![Q-Q Plot](img2.png)  
 *Figura 2: Normalidade dos resíduos — pontos próximos à linha ideal.*
+
+---
+
+## 📚 Contexto regulatório
+
+> Este projeto apoia práticas recomendadas por:
+
+- ICH Q8 (R2) – Pharmaceutical Development
+- FDA Guidance for Industry – Process Validation
+- EU GMP Annex 15 – Qualification and Validation
+- ISO 13485 – Medical devices quality management
+
+## ✨ Use este código para criar evidências estatísticas auditáveis, reprodutíveis e alinhadas às boas práticas de fabricação (BPF/GMP). 
