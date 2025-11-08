@@ -3,31 +3,31 @@
 [![R](https://img.shields.io/badge/R-4.0%2B-blue?logo=r)](https://www.r-project.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-**Design e análise de experimentos para validação de processos industriais na indústria farmacêutica e de manufatura.**
+**Design and analysis of experiments for process validation in pharmaceutical and manufacturing industries.**
 
-`doe-pharma` é um conjunto de funções em R para planejar, analisar e interpretar **experimentos de validação de processos** — como esterilização, mistura homogênea, secagem, filtração e outros — com foco em conformidade regulatória (ICH Q8, FDA 21 CFR Part 11, ISO 13485). Ao contrário da maioria dos pacotes de DOE no R, voltados para pesquisa acadêmica, este projeto é **especificamente desenhado para aplicações industriais reguladas**.
-
----
-
-## 🎯 Principais funcionalidades
-
-- ✅ **Planejamento de experimentos fatoriais fracionários** (`FrF2`) com controle de resolução.
-- ✅ **Planejamento de superfície de resposta** (RSM/CCD) para otimização de processos.
-- ✅ **Análise estatística robusta** com modelos lineares (`lm`) e diagnósticos de qualidade.
-- ✅ **Codificação automática de fatores** como `-1` / `+1` (padrão da indústria).
-- ✅ **Pronto para documentação regulatória**: saídas compatíveis com relatórios de validação.
+`doe-pharma` is a set of R functions designed to plan, analyze, and interpret process validation experiments — such as sterilization, blending homogeneity, drying, filtration, and others — with a focus on regulatory compliance (ICH Q8, FDA 21 CFR Part 11, ISO 13485). Unlike most DOE packages in R, which are geared toward academic research, this project is specifically built for regulated industrial applications.**.
 
 ---
 
-## 🚀 Exemplo rápido: Validação de homogeneidade de mistura
+## 🎯 Key Features
+
+- ✅ **Fractional factorial design** (`FrF2`) with resolution control.
+- ✅ **Response Surface Design** (RSM/CCD) for process optimization.
+- ✅ **Robust statistical analysis** using linear models (`lm`) and diagnostic plots.
+- ✅ **Automatic factor coding** as `-1` / `+1` (industry standard).
+- ✅ **Regulatory-ready outputs**: results formatted for validation reports.
+
+---
+
+## 🚀 Example: Blend Homogeneity Validation
 
 library(doe-pharma)
 
-### 1. Planejar experimento 2^(4-1) (4 fatores, resolução IV):
+### 1. Plan a 2^(4-1) design (4 factors, Resolution IV):
 
 plano <- design_frf2(factors = 4, resolution = 4)
 
-### 2. Simular resposta (% homogeneidade):
+### 2. Simulate response (% homogeneity):
 
 set.seed(123)
 plano$Homogeneidade <- 80 + 
@@ -35,7 +35,7 @@ plano$Homogeneidade <- 80 +
   3 * as.numeric(as.character(plano$Fator_2)) + 
   rnorm(nrow(plano), sd = 2)
 
-### 3. Analisar o experimento:
+### 3. Analyze the experiment:
 
 resultado <- analyze_doe(
   data = plano,
@@ -43,7 +43,7 @@ resultado <- analyze_doe(
   model_formula = "Fator_1 + Fator_2 + Fator_3"
 )
 
-### 4. Visualizar resultados:
+### 4. Visualize results:
 
 print(resultado$summary)
 print(resultado$tidy_coefficients)
@@ -51,36 +51,36 @@ plot(resultado$model, which = 1:2)  # Diagnósticos: Resíduos e Q-Q
 
 ---
 
-## 🖼️ Exemplo de Saída
+## 🖼️ Example Output
 
-### Sumário do modelo ajustado
+### Model Summary
 
 ![Resultados](img3.png)
 
-> Interpretação para relatório de validação:
+> Validation report interpretation:
 
-- Fator 1 tem efeito altamente significativo (p = 0.009) na homogeneidade.
+- Factor 1 shows a highly significant effect (p = 0.009) on homogeneity.
 
-- Fator 2 também é significativo (p = 0.012).
+- Factor 2 is also significant (p = 0.012).
 
-- Fator 3 não influencia significativamente o resultado (p = 0.48) → pode ser fixado em qualquer nível operacional.
+- Factor 3 is not statistically significant (p = 0.48) → can be fixed at any operational level.
 
-- O modelo explica 95.6% da variação (R² = 0.956), indicando excelente capacidade preditiva.
-Diagnósticos de resíduos (exibidos no gráfico abaixo) confirmam normalidade e homocedasticidade..
+- The model explains 95.6% of the variance (R² = 0.956), indicating excellent predictive capability.
+Residual diagnostics (see below) confirm normality and homoscedasticity.
 
-### Diagnósticos de resíduos
+### Residual Diagnostics
 
 ![Residuals vs Fitted](img1.png)  
-*Figura 1: Resíduos vs Valores ajustados — sem padrão sistemático.*
+*Figure 1: Residuals vs Fitted — no systematic pattern observed.*
 
 ![Q-Q Plot](img2.png)  
-*Figura 2: Normalidade dos resíduos — pontos próximos à linha ideal.*
+*Figure 2: Q-Q Plot — residuals closely follow the ideal line.*
 
 ---
 
-## 📚 Contexto regulatório
+## 📚 Regulatory Context
 
-> Este projeto apoia práticas recomendadas por:
+> This project supports best practices outlined in:
 
 - ICH Q8 (R2) – Pharmaceutical Development
 - FDA Guidance for Industry – Process Validation
